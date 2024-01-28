@@ -1,94 +1,222 @@
-<!DOCTYPE html>
+<!DOCTYPE html lang="en">
 <html>  
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Golf Swing Replay is an app for viewing an instant replay of your golf swing.">
-    <title>Golf Swing Instant Replay iOS App - Golf Swing Replay</title>    
-    <link rel="icon" type="image/png" href="/assets/images/favicon.png" >    
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">         -->
+    <title>Golf Swing Replay iOS App - Golf Swing Replay</title>    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png" >        
     
-    <link rel="stylesheet" href="/assets/css/main.css?v=1?v=1675332154" >
-      <link rel="canonical" href="https://golfswingreplay.com">
-
-      <!-- 
-        <meta property="og:url" content="https://golfswingreplay.com">
-        <meta property="og:type" content="website">
-        <meta property="og:image:type" content="image/png">
-        <meta property="og:image:width" content="1200">
-        <meta property="og:image:height" content="630">
-      
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:site" content="@golfswingreplay">
-        <meta name="twitter:creator" content="@golfswingreplay">
-      -->
-        <!-- Shared social media -->
-        <!-- 
-          <meta property="og:title" content="Golf Swing Replay is an app for seeing an instant replay of your golf swing.">
-          <meta name="twitter:title" content="Golf Swing Replay is an app for seeing an instant replay of your golf swing.">
-        
-          <meta property="og:description" content="Golf Swing Replay is an app for seeing an instant replay of your golf swing.">
-          <meta name="twitter:description" content="Golf Swing Replay is an app for seeing an instant replay of your golf swing.">
-        
-              
-          <meta property="og:image" content="/images/golfswingreplay-banner.png">
-          <meta name="twitter:image" content="/images/golfswingreplay-banner.png">
-        
-      
-        <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png?v=20220323">
-        <link rel="icon" type="image/png" href="favicons/favicon-32x32.png?v=20220323" sizes="32x32">
-        <link rel="icon" type="image/png" href="favicons/favicon-16x16.png?v=20220323" sizes="16x16">
-        <link rel="manifest" href="favicons/manifest.json?v=20220323">
-        <link rel="mask-icon" href="favicons/safari-pinned-tab.svg?v=20220323" color="#00d1b2">
-        <link rel="shortcut icon" href="favicons/favicon.ico?v=20220323">
-        <meta name="msapplication-config" content="favicons/browserconfig.xml?v=20220323">
-        <meta name="theme-color" content="#629379ff"> 
-      -->      
+    <link rel="stylesheet" href="/assets/css/main.css?v=1706431521" >
+    <link rel="canonical" href="https://golfswingreplay.com">
+    
+    <meta property="og:url" content="https://golfswingreplay.com">
+    <meta property="og:title" content="Golf Swing Replay">
+    <meta property="og:description" content="Golf Swing Replay - iOS app for recording your golf swing">
+    <meta property="og:type" content="website">
+    
+    <meta property="og:image" content="/assets/images/og-image.png?v=1706431521">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1280">
+    <meta property="og:image:height" content="630">
 
   </head>
 
-  <body class="layout-default">    
-    <nav class="navbar" role="navigation" aria-label="main navigation">
+  <body class="layout-home"> 
+    
+    <nav class="navbar is-light" role="navigation" aria-label="main navigation">      
       <div class="container">
         <div class="navbar-brand">
           <a class="navbar-item" href="/">            
-            <img src="/assets/images/golf_swing_replay_title.svg" class="title">
+            <img src="/assets/images/golf_swing_replay_title.svg?v=1706431521" class="logo">
           </a>
-      
-          <!-- <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a> -->
-        </div>      
+        </div>
+
+        <div class="navbar-end is-hidden-touch">
+
+        </div> 
       </div>
         
     </nav>
-    <section class="hero">
-  <div class="intro">    
-    <div class="container">
-      <p class="title is-size-1 has-text-weight-bold pt-6 mx-1 has-text-primary">
-        Make your practice count
-      </p>
-      <p class="subtitle is-size-3 has-text-weight-semibold mx-1">
-        With an instant replay of every swing
-      </p>
+    </div>
+    <div class="home-main">
+            
+      <div class="home">
+          <h1 class="title">
+          Improve your swing.
+          <br />
+          Faster.
+          </h1>
+        
+          <h2 class="title">
+          Automatic recording + instant replay.
+          </h2>
+        
+          <a href="https://itunes.apple.com/app/apple-store/id1621474922"><img src="/assets/images/app_store_badge.svg" width="200px"></a>        
+      </div>
+    
+    
+   
+    <div class="features">
+      
+      <div class="feature-alt">
+        <div class="container">
+          <div class="columns">
+            
+            <div class="column column-text">
+              <div class="text-block">
+                <h1 class="title">Automatic recording</h1>
+                <p>
+                  Just take swings, no pressing buttons
+                </p>
+              </div>
+            </div>
 
-      <button class="call-to-action">Coming soon for iOS</button>
+            <div class="column">
+              <img id="iphone_recording" src="/assets/images/iphone_recording.png">
+            </div>
+            
+          </div>
+        </div>
+      </div>
+        
+      <div class="container is-mobile">
+        <div class="columns">
+
+          <div class="column column-text">
+            <div class="text-block">
+              <h1 class="title">Instant replay</h1>
+              <p>
+                On another iPad or iPhone in super slow motion
+              </p>
+            </div>
+          </div>
+
+          <div class="column">
+            <img id="ipad_playback" src="/assets/images/ipad_playback.png">
+          </div>          
+
+        </div>
+      </div>
+
+      <div class="feature-alt">
+        <div class="container">
+          <div class="columns">
+
+            <div class="column column-text">  
+              <div class="text-block">
+                <h1 class="title">Swing Trace</h1>
+                <p>
+                  Visualize your swing plane to better understand your swing
+                </p>
+              </div>        
+            </div>
+
+            <div class="column">          
+              <img id="ipad_trace" src="/assets/images/ipad_playback_trace.png">                
+            </div>            
+
+          </div>
+        </div>
+      </div>
+
+
+      <div class="feature">
+        <div class="container">
+          <div class="columns">
+
+            <div class="column column-text">  
+              <div class="text-block">
+                <h1 class="title">Drawing Tools</h1>
+                <p>
+                  Analyze your swing with easy to use drawing tools                
+                </p>
+              </div>        
+            </div>
+
+            <div class="column">          
+              <img id="ipad_drawing" src="/assets/images/ipad_drawing.png">                
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="feature-alt  one-device">
+        <div class="container">
+          <div class="columns">
+
+            <div class="column column-text">  
+              <div class="text-block">
+                <h1 class="title">One device</h1>
+                <p>
+                  Only got an iPhone? No problem, you can record and replay on one device.
+                </p>
+              </div>        
+            </div>
+            
+            <div class="column">          
+              <img id="iphone_replay" src="/assets/images/iphone_replay.png">                
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="container">
+          <div class="columns">
+            
+            <div class="column column-text">  
+              <div class="text-block">
+                <h1 class="title">Start improving today</h1>
+                <p>
+                  Two week free trial
+                </p>
+              </div>        
+            </div>
+
+            <div class="column">
+              <a href="https://itunes.apple.com/app/apple-store/id1621474922"><img src="/assets/images/app_store_badge.svg" width="200px"></a>
+            </div>
+
+          </div>
+        </div>
+      </div>
       
     </div>
-  </div>  
+      
+</div>
+  
 </section>
     
   </body>
 
+
   <footer class="footer">
     <div class="container">
       <div class="columns">
-        <div class="column is-two-fifths"> 
-        <span class="copyright">©2023 SWING REPLAY LIMITED</span>
+        <div class="column">
+          <a href="https://reddit.com/user/golfswingreplay/submitted/">
+            <img src="/assets/images/social_reddit.svg?v=1706431521" class="social" />
+          </a>
+          <a href="https://instagram.com/golfswingreplay">
+            <img src="/assets/images/social_instagram.svg?v=1706431521" class="social" />
+          </a>
+
+          <a href="https://youtube.com/@golfswingreplay">
+            <img src="/assets/images/social_youtube.svg?v=1706431521" class="social" />
+          </a>
         </div>
+
+        <div class="column has-text-right"> 
+          <span class="copyright">©2024 SWING REPLAY LIMITED</span>
+        </div>
+
       </div>
     </div>
   </footer>
