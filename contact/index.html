@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Golf Swing Replay is an app for viewing an instant replay of your golf swing.">
+    <title>Contact - Golf Swing Replay</title>    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png" >    
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">         -->
+    
+    <link rel="stylesheet" href="/assets/css/main.css?v=1713170593" >
+    <link rel="canonical" href="https://golfswingreplay.com">
+
+    <meta property="og:url" content="https://golfswingreplay.com">
+    <meta property="og:title" content="Golf Swing Replay">
+    <meta property="og:description" content="Golf Swing Replay - iOS app for recording your golf swing">
+    <meta property="og:type" content="website">
+    
+    <meta property="og:image" content="/assets/images/og-image.png?v=1713170593">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1280">
+    <meta property="og:image:height" content="630">
+  </head>
+
+  <body class="layout-default">    
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/">            
+            <img src="/assets/images/golf_swing_replay_title.svg" class="title" alt="Golf Swing Replay">
+          </a>
+        </div>      
+
+        <div class="navbar-end is-hidden-touch">          
+          <a href="/contact/" class="navbar-item">Contact</a>
+
+          <a href="/privacy/" class="navbar-item">Privacy Policy</a>
+        </div> 
+      </div>
+        
+    </nav>
+    <script>
+  document.addEventListener('DOMContentLoaded', function () {
+      const form = document.getElementById('contactForm');
+      form.addEventListener('submit', function (event) {
+          event.preventDefault();
+          const formData = {
+              subject: form.elements['subject'].value,
+              from: form.elements['from'].value,
+              body: form.elements['body'].value
+          };
+          fetch('https://y1j11cfap4.execute-api.ap-southeast-2.amazonaws.com/api/contact', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(formData)
+          })
+          .then(response => {
+              if (response.ok) {
+                  return response.json();
+              }
+              throw new Error('Network response was not ok.');
+          })
+          .then(data => {
+              document.getElementById('responseMessage').textContent = 'Message sent successfully!';
+              document.getElementById('responseMessage').className = 'notification is-success';
+              form.reset(); // Reset form fields after successful submission
+          })
+          .catch(error => {
+              document.getElementById('responseMessage').textContent = 'Failed to send message: ' + error.message;
+              document.getElementById('responseMessage').className = 'notification is-danger';
+          });
+      });
+  });
+</script>
+
+<section class="section contact">
+  <div class="container">
+
+    
+    <div class="columns is-centered">
+      <div class="column is-half">
+          <h3 class="title is-3 has-text-primary has-text-weight-semibold">Contact</h3>
+          
+          <div id="responseMessage" class=""></div>
+
+          <form id="contactForm">
+              <div class="field">
+                  <label class="label">Subject</label>
+                  <div class="control">
+                      <input class="input" type="text" name="subject" placeholder="Subject" required>
+                  </div>
+              </div>
+              <div class="field">
+                  <label class="label">From</label>
+                  <div class="control">
+                      <input class="input" type="email" name="from" placeholder="Your email" required>
+                  </div>
+              </div>
+              <div class="field">
+                  <label class="label">Body</label>
+                  <div class="control">
+                      <textarea class="textarea" name="body" placeholder="Write something..." required></textarea>
+                  </div>
+              </div>
+              <div class="field is-grouped">
+                  <div class="control">
+                      <button type="submit" class="button is-link">Send</button>
+                  </div>
+              </div>
+          </form>
+      </div>
+  </div>
+
+  </div>
+</section>
+    
+  </body>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-two-fifths"> 
+        <span class="copyright">©2024 SWING REPLAY LIMITED</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+</html>
