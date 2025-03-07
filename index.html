@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Golf Swing Replay is an app for viewing an instant replay of your golf swing.">
+    <meta name="description" content="Golf Swing Replay - iOS app for recording your golf swing">
     <title>Golf Swing Replay iOS App - Golf Swing Replay</title>    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="icon" type="image/png" href="/assets/images/favicon_240.png" >        
     
-    <link rel="stylesheet" href="/assets/css/main.css?v=1740708398" >
+    <link rel="stylesheet" href="/assets/css/main.css?v=1741316513" >
     <link rel="canonical" href="https://golfswingreplay.com">
 
     <meta property="og:url" content="https://golfswingreplay.com">
@@ -18,36 +18,12 @@
     <meta property="og:description" content="Golf Swing Replay - iOS app for recording your golf swing">
     <meta property="og:type" content="website">
 
-    <meta property="og:image" content="/assets/images/og-image.png?v=1740708398">
+    <meta property="og:image" content="/assets/images/og-image.png?v=1741316513">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1280">
     <meta property="og:image:height" content="630">
 
-    <!-- Meta Pixel Code -->
-    <script>
-        !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '924549999853816');
-        fbq('track', 'PageView');
-    </script>
-    <noscript>
-      <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=924549999853816&ev=PageView&noscript=1" />
-    </noscript>
-    <!-- End Meta Pixel Code -->
-
-    <script type="text/javascript">
-      (function(c,l,a,r,i,t,y){
-          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-      })(window, document, "clarity", "script", "od1fv1unli");
-    </script>
+  
 
     <script type="application/ld+json">
       {
@@ -62,8 +38,8 @@
                 "applicationCategory": "SportsApplication",
                 "aggregateRating": {
                   "@type": "AggregateRating",
-                  "ratingValue": 5,
-                  "ratingCount": 1
+                  "ratingValue": 4.6,
+                  "ratingCount": 16
                 },
                 "offers": {
                     "@type": "Offer",
@@ -105,7 +81,7 @@
             <div class="container">
             <div class="navbar-brand">
                 <a class="navbar-item" href="/">            
-                <img src="/assets/images/golf_swing_replay_title.svg?v=1740708398" class="logo">
+                <img src="/assets/images/golf_swing_replay_title.svg?v=1741316513" class="logo">
                 </a>
 
                 <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
@@ -138,21 +114,19 @@
 
     <div class="home-main">
             
-      <div class="home">
-          <h1 class="title">
-          Improve your swing.
-          <br />
-          Faster.
-          </h1>
-        
-          <h2 class="title">
-            Automatic recording & instant replay with swing trace.
-          </h2>
-        
-          <a role="link" tabindex="0" target="_blank" href="https://apps.apple.com/app/apple-store/id1621474922?pt=124949321&ct=web&mt=8" class="download-button"><img src="/assets/images/app_store_badge.svg" alt="Download on the App Store" width="200px"></a>        
-      </div>
-    
-    
+    <div class="home">
+        <h1 class="title">
+        Improve your swing.
+        <br />
+        Faster.
+        </h1>
+      
+        <h2 class="title">
+          Automatic recording & instant replay with swing trace.
+        </h2>
+      
+        <a role="link" tabindex="0" target="_blank" href="https://apps.apple.com/app/apple-store/id1621474922?pt=124949321&ct=web&mt=8" class="download-button"><img src="/assets/images/app_store_badge.svg" alt="Download on the App Store" width="200px"></a>        
+    </div>   
    
     <div class="features">
       
@@ -160,6 +134,14 @@
         <div class="container">
           <div class="columns">
             
+            <div class="column">
+              <picture>
+                <source type="image/webp" srcset="/assets/images/iphone_recording.webp">
+                <img id="iphone_recording" src="/assets/images/iphone_recording.png" alt="iPhone recording golf swing">
+              </picture>
+              
+            </div>
+
             <div class="column column-text">
               <div class="text-block">
                 <h2 class="title">Automatic recording</h2>
@@ -171,10 +153,6 @@
                 </p>
               </div>
             </div>
-
-            <div class="column">
-              <img id="iphone_recording" src="/assets/images/iphone_recording.png" alt="iPhone recording golf swing">
-            </div>
             
           </div>
         </div>
@@ -183,6 +161,13 @@
       <div class="container is-mobile">
         <div class="columns">
 
+          <div class="column">
+            <picture>
+              <source type="image/webp" srcset="/assets/images/iphone_playback.webp">
+              <img id="ipad_playback" src="/assets/images/iphone_playback.png" alt="iPhone instant replay of golf swing">
+            </picture>
+          </div>          
+          
           <div class="column column-text">
             <div class="text-block">
               <h2 class="title">Instant replay</h2>
@@ -191,18 +176,21 @@
               </p>
             </div>
           </div>
-
-          <div class="column">
-            <img id="ipad_playback" src="/assets/images/iphone_playback.png" alt="iPhone instant replay of golf swing">
-          </div>          
-
+          
         </div>
       </div>
 
       <div class="feature-alt">
         <div class="container">
           <div class="columns">
-
+            
+            <div class="column">
+              <picture>
+                <source type="image/webp" srcset="/assets/images/iphone_drawing.webp">
+                <img id="iphone_drawing" src="/assets/images/iphone_drawing.png" alt="Analyze your swing with easy to use drawing tools">
+              </picture>
+            </div>
+            
             <div class="column column-text">  
               <div class="text-block">
                 <h2 class="title">Drawing Tools</h2>
@@ -212,17 +200,20 @@
               </div>        
             </div>
 
-            <div class="column">          
-              <img id="ipad_drawing" src="/assets/images/iphone_drawing.png" alt="Analyze your swing with easy to use drawing tools">
-            </div>
-
           </div>
         </div>
       </div>
 
       <div class="feature">
         <div class="container">
-          <div class="columns">
+          <div class="columns">            
+            
+            <div class="column">            
+              <picture>
+                <source type="image/webp" srcset="/assets/images/iphone_compare.webp">
+                <img id="iphone_compare" src="/assets/images/iphone_compare.png" alt="See your progress or compare your swing to a professional.">      
+              </picture>                            
+            </div>
             
             <div class="column column-text">  
               <div class="text-block">
@@ -230,13 +221,9 @@
                 <p>
                   See your progress or compare your swing to a professional.
                 </p>
-              </div>        
-            </div>  
+              </div>
+            </div> 
 
-            <div class="column">          
-              <img id="ipad_replay" src="/assets/images/iphone_compare.png" alt="See your progress or compare your swing to a professional.">                
-            </div>
-            
           </div>
         </div>
       </div>
@@ -244,7 +231,14 @@
       <div class="feature-alt">
         <div class="container">
           <div class="columns">
-
+            
+            <div class="column">
+              <picture>
+                <source type="image/webp" srcset="/assets/images/ipad_playback.webp">
+                <img id="ipad_playback" src="/assets/images/ipad_playback.png" alt="Pair with an iPad to watch the instant replay on a larger screen, right in front of you.">
+              </picture>
+            </div>
+            
             <div class="column column-text">  
               <div class="text-block">
                 <h2 class="title">Paired devices</h2>
@@ -254,11 +248,7 @@
                 <p>
                   Stay in the zone without having to look back at your iPhone.
                 </p>
-              </div>        
-            </div>
-
-            <div class="column">          
-              <img id="ipad_replay" src="/assets/images/ipad_playback.png" alt="Pair with an iPad to watch the instant replay on a larger screen, right in front of you.">                
+              </div>
             </div>
 
           </div>
@@ -275,7 +265,7 @@
                 <p>
                   Try it for free
                 </p>
-              </div>        
+              </div>
             </div>
 
             <div class="column">
@@ -290,21 +280,19 @@
       <div class="feature-alt last">
         <div class="container">
           <div class="columns">
-
+            
+            <div class="column">          
+              <img id="ipad_replay" src="/assets/images/android-head_flat.png" alt="Android">                
+            </div>
+            
             <div class="column column-text">  
               <div class="text-block">
                 <h2 class="title">Android</h2>
                 <p>
                   Golf Swing Replay is currently only available for iOS. However an Android release is planned for the future.
                 </p>
-              </div>        
-            </div>
-            
-            <div class="column">          
-              <img id="ipad_replay" src="/assets/images/android-head_flat.png" alt="Android">                
-            </div>
-            
-            
+              </div>
+            </div>            
 
           </div>
         </div>
@@ -324,14 +312,13 @@
       <div class="columns">
         <div class="column has-text-centered-mobile">
           <a href="https://reddit.com/user/golfswingreplay/submitted/">
-            <img src="/assets/images/social_reddit.svg?v=1740708398" class="social" />
+            <img src="/assets/images/social_reddit.svg?v=1741316513" class="social" />
           </a>
           <a href="https://instagram.com/golfswingreplay">
-            <img src="/assets/images/social_instagram.svg?v=1740708398" class="social" />
+            <img src="/assets/images/social_instagram.svg?v=1741316513" class="social" />
           </a>
-
           <a href="https://youtube.com/@golfswingreplay">
-            <img src="/assets/images/social_youtube.svg?v=1740708398" class="social" />
+            <img src="/assets/images/social_youtube.svg?v=1741316513" class="social" />
           </a>
         </div>
 
