@@ -10,15 +10,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="icon" type="image/png" href="/assets/images/favicon_240.png" >        
     
-    <link rel="stylesheet" href="/assets/css/main.css?v=1748836791" >
-    <link rel="canonical" href="https://golfswingreplay.com/ko/contact/">
+    <link rel="stylesheet" href="/assets/css/main.css?v=1752033571" >
+    <link rel="canonical" href="https://golfswingreplay.com/contact/">
     
     <meta property="og:url" content="https://golfswingreplay.com/contact/">
     <meta property="og:title" content="Golf Swing Replay">
     <meta property="og:description" content="Golf Swing Replay - iOS app for recording your golf swing">
     <meta property="og:type" content="website">
 
-    <meta property="og:image" content="/assets/images/og-image.png?v=1748836791">
+    <meta property="og:image" content="/assets/images/og-image.png?v=1752033571">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1280">
     <meta property="og:image:height" content="630">
@@ -48,6 +48,46 @@
           t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
           y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
       })(window, document, "clarity", "script", "od1fv1unli");
+    </script>
+
+    <script type="text/javascript">
+      function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+        return null;
+      }
+
+      function generateUUID() {
+        return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+          (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+        );
+      }
+
+      function sendMetaCapiEventWithBeacon(eventName) {
+        const payload = {
+          event_name: eventName,
+          event_time: Math.floor(Date.now() / 1000),
+          event_id: generateUUID(),
+          action_source: "website",
+          user_data: {
+            fbc: getCookie('_fbc') || '',
+            fbp: getCookie('_fbp') || ''
+          }
+        };
+
+        const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
+
+        navigator.sendBeacon("https://api.golfswingreplay.com/api/events", blob);
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".download-button").forEach(button => {
+          button.addEventListener("click", () => {
+            sendMetaCapiEventWithBeacon("Initiate checkout");
+          });
+        });
+      });
     </script>
     
 
@@ -106,7 +146,7 @@
             <div class="container">
             <div class="navbar-brand">
                 <a class="navbar-item" href="/ko/">            
-                <img src="/assets/images/golf_swing_replay_title.svg?v=1748836791" class="logo">
+                <img src="/assets/images/golf_swing_replay_title.svg?v=1752033571" class="logo">
                 </a>
 
                 <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
@@ -249,13 +289,13 @@
         <div class="columns">
         <div class="column has-text-centered-mobile">
             <a href="https://reddit.com/user/golfswingreplay/submitted/">
-            <img src="/assets/images/social_reddit.svg?v=1748836791" class="social" />
+            <img src="/assets/images/social_reddit.svg?v=1752033571" class="social" />
             </a>
             <a href="https://instagram.com/golfswingreplay">
-            <img src="/assets/images/social_instagram.svg?v=1748836791" class="social" />
+            <img src="/assets/images/social_instagram.svg?v=1752033571" class="social" />
             </a>
             <a href="https://youtube.com/@golfswingreplay">
-            <img src="/assets/images/social_youtube.svg?v=1748836791" class="social" />
+            <img src="/assets/images/social_youtube.svg?v=1752033571" class="social" />
             </a>
         </div>
 
