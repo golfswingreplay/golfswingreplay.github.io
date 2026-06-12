@@ -4,21 +4,22 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Golf Swing Replay - iOS app for recording your golf swing">
-    <title>プライバシーポリシー - Golf Swing Replay</title>    
+    <meta name="description" content="Swing Replay - iOS app for recording your golf swing">
+    <title>プライバシーポリシー - Swing Replay</title>    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="icon" type="image/png" href="/assets/images/favicon_240.png" >        
     
-    <link rel="stylesheet" href="/assets/css/main.css?v=1752107094" >
-    <link rel="canonical" href="https://golfswingreplay.com/privacy/">
+    <link rel="icon" type="image/png" href="/assets/images/favicon_240.png?v=1781139666" >        
+    <link rel="apple-touch-icon" href="/assets/images/favicon_240.png?v=1781139666" >        
+    <link rel="stylesheet" href="/assets/css/main.css?v=1781139666" >
+    <link rel="canonical" href="https://golfswingreplay.com/ja/privacy/">
     
     <meta property="og:url" content="https://golfswingreplay.com/privacy/">
-    <meta property="og:title" content="Golf Swing Replay">
-    <meta property="og:description" content="Golf Swing Replay - iOS app for recording your golf swing">
+    <meta property="og:title" content="Swing Replay">
+    <meta property="og:description" content="Swing Replay - iOS app for recording your golf swing">
     <meta property="og:type" content="website">
 
-    <meta property="og:image" content="/assets/images/og-image.png?v=1752107094">
+    <meta property="og:image" content="/assets/images/og-image.png?v=1781139666">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1280">
     <meta property="og:image:height" content="630">
@@ -82,7 +83,7 @@
       }
 
       document.addEventListener("DOMContentLoaded", () => {
-        document.querySelectorAll(".download-button").forEach(button => {
+        document.querySelectorAll(".download-button, .nav-action-btn, .hero-download-btn, .black-download-btn").forEach(button => {
           button.addEventListener("click", () => {
             sendMetaCapiEventWithBeacon("InitiateCheckout");
           });
@@ -98,7 +99,7 @@
             {
                 "@context": "https://schema.org",
                 "@type": "SoftwareApplication",
-                "name": "Golf Swing Replay",
+                "name": "Swing Replay",
                 "alternateName": "Swing Replay",
                 "operatingSystem": "iOS",
                 "applicationCategory": "SportsApplication",
@@ -142,41 +143,39 @@
   </head>
 
   <body class="layout-default">    
-        <nav class="navbar is-light" role="navigation" aria-label="main navigation">      
-            <div class="container">
-            <div class="navbar-brand">
-                <a class="navbar-item" href="/ja/">            
-                <img src="/assets/images/golf_swing_replay_title.svg?v=1752107094" class="logo">
-                </a>
+<div class="glass-navbar-container">
+    <nav class="glass-navbar">
+        <div class="glass-navbar-content">
+            <!-- App Identity -->
+            <a class="nav-identity" href="/ja/">
+                <img src="/assets/images/favicon_240.png?v=1781139666" class="nav-icon" alt="Swing Replay Logo">
+                <span class="nav-app-name">Swing Replay</span>
+            </a>
 
-                <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                </a>
-            </div>
-
-            <div class="navbar-menu" id="navMenu">
-                <div class="navbar-end">
+            <!-- Nav Links -->
+            <ul class="nav-links">
                 
-                <div class="navbar-item">
-                    <a rel="nofollow noreferrer" role="link" tabindex="0" target="_blank" href="https://apps.apple.com/app/apple-store/id1621474922?pt=124949321&ct=web&mt=8" class="navbar-item">ダウンロード</a>
-                </div>
+                <li><a href="/ja/contact/" class="nav-item-link">お問い合わせ</a></li>
 
-                <div class="navbar-item">
-                    
-                    <a href="/ja/contact/" class="navbar-item">お問い合わせ</a>
-                </div>
+                
+                <li><a href="/ja/privacy/" class="nav-item-link">プライバシーポリシー</a></li>
+            </ul>
 
-                <div class="navbar-item">
-                    
-                    <a data-url="/privacy/" href="/ja/privacy/" class="navbar-item">プライバシーポリシー</a>
-                </div>
-                </div>
-            </div> 
+            <!-- Action Pill Button -->
+            <div class="nav-action">
+                <a rel="nofollow noreferrer" target="_blank" href="https://apps.apple.com/app/apple-store/id1621474922?pt=124949321&ct=web&mt=8" class="nav-action-btn">
+                    <span class="btn-apple-logo">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516s1.52.087 2.475-1.258.762-2.391.728-2.43m3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422s1.675-2.789 1.698-2.854-.597-.79-1.254-1.157a3.7 3.7 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56s.625 1.924 1.273 2.796c.576.984 1.34 1.667 1.659 1.899s1.219.386 1.843.067c.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758q.52-1.185.473-1.282"></path>
+                        </svg>
+                    </span>
+                    <span class="btn-label">ダウンロード</span>
+                </a>
             </div>
-            
-        </nav>
+        </div>
+    </nav>
+</div>
+<div class="glass-navbar-spacer"></div>
 
     <section class="section">
   <div class="container">
@@ -192,7 +191,7 @@ Last updated March 25, 2024
 This privacy notice for SWING REPLAY LIMITED ("we," "us," or "our"), describes how and why we might collect, store, use, and/or share ("process") your information when you use our services ("Services"), such as when you:
 </p>
 <p>
-Download and use our mobile application (Golf Swing Replay), or any other application of ours that links to this privacy notice
+Download and use our mobile application (Swing Replay), or any other application of ours that links to this privacy notice
 </p>
 
 <p>
@@ -890,60 +889,85 @@ To request to review, update, or delete your personal information, please fill o
 
   <footer class="footer">
     <div class="container">
-        <div class="columns">
+        <div class="columns is-vcentered">
         <div class="column has-text-centered-mobile">
             <a href="https://reddit.com/user/golfswingreplay/submitted/">
-            <img src="/assets/images/social_reddit.svg?v=1752107094" class="social" />
+            <img src="/assets/images/social_reddit.svg?v=1781139666" class="social" />
             </a>
             <a href="https://instagram.com/golfswingreplay">
-            <img src="/assets/images/social_instagram.svg?v=1752107094" class="social" />
+            <img src="/assets/images/social_instagram.svg?v=1781139666" class="social" />
             </a>
             <a href="https://youtube.com/@golfswingreplay">
-            <img src="/assets/images/social_youtube.svg?v=1752107094" class="social" />
+            <img src="/assets/images/social_youtube.svg?v=1781139666" class="social" />
             </a>
         </div>
 
-        <div class="content is-justify-content-center has-text-centered is-flex is-align-items-center">
-            <span class="copyright">©2025 SWING REPLAY LIMITED</span>
+        <div class="column content is-justify-content-center has-text-centered is-flex is-flex-direction-column is-align-items-center m-0">
+            <span class="copyright">©2026 SWING REPLAY LIMITED</span>
+            <div class="footer-nav-links">
+                
+                <a href="/ja/contact/">お問い合わせ</a>
+                <span class="bullet">·</span>
+                
+                <a href="/ja/privacy/">プライバシーポリシー</a>
+            </div>
         </div>
     
         <div class="column has-text-right has-text-centered-mobile"> 
-            <div class="dropdown is-hoverable is-up has-text-centered">
-              <div class="dropdown-trigger">
-                <button
-                  class="button is-white"
-                  aria-haspopup="true"
-                  aria-controls="dropdown-menu-language"
-                >
-                  <span class="icon">
-                    <!-- Heroicons "globe" (outline) -->
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" />
-                    </svg>
-                  </span>
-                  <span>
-                    日本語
-                    
-                  </span>
-                </button>
-              </div>
-              <div
-                class="dropdown-menu"
-                id="dropdown-menu-language"
-                role="menu"
-              >
-                    <div class="dropdown-content">
-                        <a href=/ class="dropdown-item px-0 is-size-6">
-                            English                            
-                        </a>
-                        <a href="/ja/" class="dropdown-item px-0 is-size-6 is-active">
-                            日本語
-                        </a>
-                        <a href="/ko/" class="dropdown-item px-0 is-size-6">
-                            한국어
-                        </a>
-                    </div>
-                </div>
+            <div class="language-flags">
+              <a href=" https://golfswingreplay.com/" onclick="window.location.href = window.location.origin + '/'; return false;" class="flag-btn" title="English" aria-label="English">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 190 100" width="24" height="13" class="flag-icon">
+                  <rect width="190" height="100" fill="#B22234" />
+                  <path d="M0 7.69h190M0 23.07h190M0 38.46h190M0 53.84h190M0 69.23h190M0 84.61h190" stroke="#FFF" stroke-width="7.69" />
+                  <rect width="76" height="53.85" fill="#3C3B6E" />
+                  <g fill="#FFF">
+                    <circle cx="6.3" cy="5.3" r="1.5" /><circle cx="19" cy="5.3" r="1.5" /><circle cx="31.6" cy="5.3" r="1.5" /><circle cx="44.3" cy="5.3" r="1.5" /><circle cx="57" cy="5.3" r="1.5" /><circle cx="69.6" cy="5.3" r="1.5" />
+                    <circle cx="12.6" cy="10.7" r="1.5" /><circle cx="25.3" cy="10.7" r="1.5" /><circle cx="38" cy="10.7" r="1.5" /><circle cx="50.6" cy="10.7" r="1.5" /><circle cx="63.3" cy="10.7" r="1.5" />
+                    <circle cx="6.3" cy="16.1" r="1.5" /><circle cx="19" cy="16.1" r="1.5" /><circle cx="31.6" cy="16.1" r="1.5" /><circle cx="44.3" cy="16.1" r="1.5" /><circle cx="57" cy="16.1" r="1.5" /><circle cx="69.6" cy="16.1" r="1.5" />
+                    <circle cx="12.6" cy="21.5" r="1.5" /><circle cx="25.3" cy="21.5" r="1.5" /><circle cx="38" cy="21.5" r="1.5" /><circle cx="50.6" cy="21.5" r="1.5" /><circle cx="63.3" cy="21.5" r="1.5" />
+                    <circle cx="6.3" cy="26.9" r="1.5" /><circle cx="19" cy="26.9" r="1.5" /><circle cx="31.6" cy="26.9" r="1.5" /><circle cx="44.3" cy="26.9" r="1.5" /><circle cx="57" cy="26.9" r="1.5" /><circle cx="69.6" cy="26.9" r="1.5" />
+                    <circle cx="12.6" cy="32.3" r="1.5" /><circle cx="25.3" cy="32.3" r="1.5" /><circle cx="38" cy="32.3" r="1.5" /><circle cx="50.6" cy="32.3" r="1.5" /><circle cx="63.3" cy="32.3" r="1.5" />
+                    <circle cx="6.3" cy="37.7" r="1.5" /><circle cx="19" cy="37.7" r="1.5" /><circle cx="31.6" cy="37.7" r="1.5" /><circle cx="44.3" cy="37.7" r="1.5" /><circle cx="57" cy="37.7" r="1.5" /><circle cx="69.6" cy="37.7" r="1.5" />
+                    <circle cx="12.6" cy="43.1" r="1.5" /><circle cx="25.3" cy="43.1" r="1.5" /><circle cx="38" cy="43.1" r="1.5" /><circle cx="50.6" cy="43.1" r="1.5" /><circle cx="63.3" cy="43.1" r="1.5" />
+                    <circle cx="6.3" cy="48.5" r="1.5" /><circle cx="19" cy="48.5" r="1.5" /><circle cx="31.6" cy="48.5" r="1.5" /><circle cx="44.3" cy="48.5" r="1.5" /><circle cx="57" cy="48.5" r="1.5" /><circle cx="69.6" cy="48.5" r="1.5" />
+                  </g>
+                </svg>
+              </a>
+              <a href=" https://golfswingreplay.com/ja/" onclick="window.location.href = window.location.origin + '/ja/'; return false;" class="flag-btn is-active" title="日本語" aria-label="日本語">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" width="24" height="16" class="flag-icon">
+                  <rect width="300" height="200" fill="#FFF" />
+                  <circle cx="150" cy="100" r="60" fill="#BC002D" />
+                </svg>
+              </a>
+              <a href=" https://golfswingreplay.com/ko/" onclick="window.location.href = window.location.origin + '/ko/'; return false;" class="flag-btn" title="한국어" aria-label="한국어">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" width="24" height="16" class="flag-icon">
+                  <rect width="300" height="200" fill="#FFF" />
+                  <g transform="translate(150, 100) rotate(-33.7)">
+                    <path d="M-50 0 A50 50 0 0 1 50 0 A25 25 0 0 1 0 0 A25 25 0 0 0 -50 0" fill="#C60C30" />
+                    <path d="M-50 0 A50 50 0 0 0 50 0 A25 25 0 0 1 0 0 A25 25 0 0 0 -50 0" fill="#003478" />
+                  </g>
+                  <g fill="#000" transform="translate(68, 45) rotate(33.7)">
+                    <rect x="-18" y="-9" width="36" height="3" />
+                    <rect x="-18" y="-3" width="36" height="3" />
+                    <rect x="-18" y="3" width="36" height="3" />
+                  </g>
+                  <g fill="#000" transform="translate(232, 155) rotate(33.7)">
+                    <rect x="-18" y="-9" width="16" height="3" /><rect x="2" y="-9" width="16" height="3" />
+                    <rect x="-18" y="-3" width="16" height="3" /><rect x="2" y="-3" width="16" height="3" />
+                    <rect x="-18" y="3" width="16" height="3" /><rect x="2" y="3" width="16" height="3" />
+                  </g>
+                  <g fill="#000" transform="translate(232, 45) rotate(-33.7)">
+                    <rect x="-18" y="-9" width="36" height="3" />
+                    <rect x="-18" y="-3" width="16" height="3" /><rect x="2" y="-3" width="16" height="3" />
+                    <rect x="-18" y="3" width="36" height="3" />
+                  </g>
+                  <g fill="#000" transform="translate(68, 155) rotate(-33.7)">
+                    <rect x="-18" y="-9" width="16" height="3" /><rect x="2" y="-9" width="16" height="3" />
+                    <rect x="-18" y="-3" width="36" height="3" />
+                    <rect x="-18" y="3" width="16" height="3" /><rect x="2" y="3" width="16" height="3" />
+                  </g>
+                </svg>
+              </a>
             </div>
         </div>
 
