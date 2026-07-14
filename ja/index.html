@@ -13,9 +13,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <link rel="icon" type="image/png" href="/assets/images/favicon_240.png?v=1781139666" >        
-    <link rel="apple-touch-icon" href="/assets/images/favicon_240.png?v=1781139666" >        
-    <link rel="stylesheet" href="/assets/css/main.css?v=1781139666" >
+    <link rel="icon" type="image/png" href="/assets/images/favicon_240.png?v=1784002746" >        
+    <link rel="apple-touch-icon" href="/assets/images/favicon_240.png?v=1784002746" >        
+    <link rel="stylesheet" href="/assets/css/main.css?v=1784002746" >
     <link rel="canonical" href="https://golfswingreplay.com">
 
     <meta property="og:url" content="https://golfswingreplay.com">
@@ -23,7 +23,7 @@
     <meta property="og:description" content="Swing Replay - iOS app for recording your golf swing">
     <meta property="og:type" content="website">
 
-    <meta property="og:image" content="/assets/images/og-image.png?v=1781139666">
+    <meta property="og:image" content="/assets/images/og-image.png?v=1784002746">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1280">
     <meta property="og:image:height" content="630">
@@ -69,12 +69,13 @@
         );
       }
 
-      function sendMetaCapiEventWithBeacon(eventName) {
+      function sendMetaCapiEventWithBeacon(eventName, eventId) {
         const payload = {
           event_name: eventName,
           event_time: Math.floor(Date.now() / 1000),
-          event_id: generateUUID(),
+          event_id: eventId,
           action_source: "website",
+          event_source_url: window.location.href,
           user_data: {
             fbc: getCookie('_fbc') || '',
             fbp: getCookie('_fbp') || ''
@@ -89,7 +90,13 @@
       document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll(".download-button, .nav-action-btn, .hero-download-btn, .black-download-btn").forEach(button => {
           button.addEventListener("click", () => {
-            sendMetaCapiEventWithBeacon("InitiateCheckout");
+            const eventId = generateUUID();
+
+            if (typeof fbq === "function") {
+              fbq('track', 'InitiateCheckout', {}, { eventID: eventId });
+            }
+
+            sendMetaCapiEventWithBeacon("InitiateCheckout", eventId);
           });
         });
       });
@@ -144,6 +151,7 @@
 
         });
     </script>
+
   </head>
 
   <body class="layout-home">
@@ -153,7 +161,7 @@
         <div class="glass-navbar-content">
             <!-- App Identity -->
             <a class="nav-identity" href="/ja/">
-                <img src="/assets/images/favicon_240.png?v=1781139666" class="nav-icon" alt="Swing Replay Logo">
+                <img src="/assets/images/favicon_240.png?v=1784002746" class="nav-icon" alt="Swing Replay Logo">
                 <span class="nav-app-name">Swing Replay</span>
             </a>
 
@@ -251,7 +259,7 @@
                 <div class="iphone-screen">
                   <!-- Video element playing Swing Replay preview video -->
                   <video id="demo-video" autoplay loop muted playsinline onended="this.currentTime = 0; this.play();" aria-label="Swing Replay demo video">
-                    <source src="/assets/images/iPhone_preview_v2.mp4?v=1781139666" type="video/mp4">
+                    <source src="/assets/images/iPhone_preview_v2.mp4?v=1784002746" type="video/mp4">
                   </video>
                   
                   <!-- Custom Video Glass Controls -->
@@ -296,8 +304,8 @@
               </div>
               <div class="bento-card-media media-at-bottom">
                 <picture>
-                  <source type="image/webp" srcset="/assets/images/iphone_recording_ja.webp?v=1781139666" />
-                  <img id="iphone_recording" src="/assets/images/iphone_recording_ja.png?v=1781139666" alt="iPhoneがゴルフスイングを録画している" />
+                  <source type="image/webp" srcset="/assets/images/iphone_recording_ja.webp?v=1784002746" />
+                  <img id="iphone_recording" src="/assets/images/iphone_recording_ja.png?v=1784002746" alt="iPhoneがゴルフスイングを録画している" />
                 </picture>
               </div>
             </figure>
@@ -310,8 +318,8 @@
               </div>
               <div class="bento-card-media media-at-bottom">
                 <picture>
-                  <source type="image/webp" srcset="/assets/images/iphone_positions.webp?v=1781139666" />
-                  <img id="iphone_playback" src="/assets/images/iphone_positions.png?v=1781139666" alt="iPhoneでゴルフスイングのインスタントリプレイ" />
+                  <source type="image/webp" srcset="/assets/images/iphone_positions.webp?v=1784002746" />
+                  <img id="iphone_playback" src="/assets/images/iphone_positions.png?v=1784002746" alt="iPhoneでゴルフスイングのインスタントリプレイ" />
                 </picture>
               </div>
             </figure>
@@ -324,8 +332,8 @@
               </div>
               <div class="bento-card-media media-at-bottom">
                 <picture>
-                  <source type="image/webp" srcset="/assets/images/iphone_playback_ja.webp?v=1781139666" />
-                  <img id="iphone_playback_trace" src="/assets/images/iphone_playback_ja.png?v=1781139666" alt="スイングトレースの可視化を表示するiPhone" />
+                  <source type="image/webp" srcset="/assets/images/iphone_playback_ja.webp?v=1784002746" />
+                  <img id="iphone_playback_trace" src="/assets/images/iphone_playback_ja.png?v=1784002746" alt="スイングトレースの可視化を表示するiPhone" />
                 </picture>
               </div>
             </figure>
@@ -334,8 +342,8 @@
             <figure class="bento-card card-third stacked-card card-drawing">
               <div class="bento-card-media media-at-top">
                 <picture>
-                  <source type="image/webp" srcset="/assets/images/iphone_drawing_ja.webp?v=1781139666" />
-                  <img id="iphone_drawing" src="/assets/images/iphone_drawing_ja.png?v=1781139666" alt="使いやすい描画ツールでスイングを分析。" />
+                  <source type="image/webp" srcset="/assets/images/iphone_drawing_ja.webp?v=1784002746" />
+                  <img id="iphone_drawing" src="/assets/images/iphone_drawing_ja.png?v=1784002746" alt="使いやすい描画ツールでスイングを分析。" />
                 </picture>
               </div>
               <div class="bento-card-text">
@@ -348,8 +356,8 @@
             <figure class="bento-card card-two-thirds stacked-card card-compare-swings">
               <div class="bento-card-media media-at-top">
                 <picture>
-                  <source type="image/webp" srcset="/assets/images/iphone_compare.webp?v=1781139666" />
-                  <img id="iphone_compare" src="/assets/images/iphone_compare.png?v=1781139666" alt="スイングを並べて比較。時間の経過とともに進歩を確認したり、プロのスイングと自分の動きを比較・分析したりできます。" />
+                  <source type="image/webp" srcset="/assets/images/iphone_compare.webp?v=1784002746" />
+                  <img id="iphone_compare" src="/assets/images/iphone_compare.png?v=1784002746" alt="スイングを並べて比較。時間の経過とともに進歩を確認したり、プロのスイングと自分の動きを比較・分析したりできます。" />
                 </picture>
               </div>
               <div class="bento-card-text">
@@ -367,8 +375,8 @@
               </div>
               <div class="bento-card-media media-paired-stacked">
                 <picture>
-                  <source type="image/webp" srcset="/assets/images/ipad_playback_real.webp?v=1781139666" />
-                  <img id="ipad_playback" src="/assets/images/ipad_playback_real.jpg?v=1781139666" alt="iPadとペアリングして、目の前の大画面でインスタントリプレイを視聴できます。" />
+                  <source type="image/webp" srcset="/assets/images/ipad_playback_real.webp?v=1784002746" />
+                  <img id="ipad_playback" src="/assets/images/ipad_playback_real.jpg?v=1784002746" alt="iPadとペアリングして、目の前の大画面でインスタントリプレイを視聴できます。" />
                 </picture>
               </div>
             </figure>
@@ -560,7 +568,7 @@
               <div class="column">
                 <img
                   id="ipad_replay"
-                  src="/assets/images/android-head_flat.png?v=1781139666"
+                  src="/assets/images/android-head_flat.png?v=1784002746"
                   alt="Android"
                 />
               </div>
@@ -611,13 +619,13 @@
         <div class="columns is-vcentered">
         <div class="column has-text-centered-mobile">
             <a href="https://reddit.com/user/golfswingreplay/submitted/">
-            <img src="/assets/images/social_reddit.svg?v=1781139666" class="social" />
+            <img src="/assets/images/social_reddit.svg?v=1784002746" class="social" />
             </a>
             <a href="https://instagram.com/golfswingreplay">
-            <img src="/assets/images/social_instagram.svg?v=1781139666" class="social" />
+            <img src="/assets/images/social_instagram.svg?v=1784002746" class="social" />
             </a>
             <a href="https://youtube.com/@golfswingreplay">
-            <img src="/assets/images/social_youtube.svg?v=1781139666" class="social" />
+            <img src="/assets/images/social_youtube.svg?v=1784002746" class="social" />
             </a>
         </div>
 
