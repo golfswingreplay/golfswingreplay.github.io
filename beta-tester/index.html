@@ -9,9 +9,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <link rel="icon" type="image/png" href="/assets/images/favicon_240.png?v=1784258126" >        
-    <link rel="apple-touch-icon" href="/assets/images/favicon_240.png?v=1784258126" >        
-    <link rel="stylesheet" href="/assets/css/main.css?v=1784258126" >
+    <link rel="icon" type="image/png" href="/assets/images/favicon_240.png?v=1784260055" >        
+    <link rel="apple-touch-icon" href="/assets/images/favicon_240.png?v=1784260055" >        
+    <link rel="stylesheet" href="/assets/css/main.css?v=1784260055" >
     
     <link rel="canonical" href="https://golfswingreplay.com/beta-tester/">
     
@@ -20,7 +20,7 @@
     <meta property="og:description" content="Swing Replay - iOS app for recording your golf swing">
     <meta property="og:type" content="website">
 
-    <meta property="og:image" content="/assets/images/og-image.png?v=1784258126">
+    <meta property="og:image" content="/assets/images/og-image.png?v=1784260055">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1280">
     <meta property="og:image:height" content="630">
@@ -43,19 +43,26 @@
         'https://connect.facebook.net/en_US/fbevents.js');
         fbq('init', '924549999853816');
         fbq('track', 'PageView');
+
+        window.loadClarity = function () {
+          if (window.clarityLoaded) return;
+          window.clarityLoaded = true;
+
+          (function(c,l,a,r,i,t,y){
+              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+          })(window, document, "clarity", "script", "od1fv1unli");
+        };
+
+        window.addEventListener('load', function () {
+          window.setTimeout(window.loadClarity, 5000);
+        }, { once: true });
     </script>
     <noscript>
       <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=924549999853816&ev=PageView&noscript=1" />
     </noscript>
     <!-- End Meta Pixel Code -->
-
-    <script type="text/javascript">
-      (function(c,l,a,r,i,t,y){
-          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-      })(window, document, "clarity", "script", "od1fv1unli");
-    </script>
 
     <script type="text/javascript">
       function getCookie(name) {
@@ -149,7 +156,9 @@
           // threshold, even though the element carries the muted autoplay hint.
           demoVideo.autoplay = videoIsVisible;
           const source = document.createElement('source');
-          source.src = demoVideo.dataset.src;
+          const mobileVideo = demoVideo.dataset.srcMobile;
+          const useMobileVideo = mobileVideo && window.matchMedia('(max-width: 768px)').matches;
+          source.src = useMobileVideo ? mobileVideo : demoVideo.dataset.src;
           source.type = 'video/mp4';
           demoVideo.appendChild(source);
           // Start buffering after the initial page render, independently of
@@ -216,7 +225,7 @@
         <div class="glass-navbar-content">
             <!-- App Identity -->
             <a class="nav-identity" href="/">
-                <img src="/assets/images/favicon_240.png?v=1784258126" class="nav-icon" width="40" height="40" alt="Swing Replay Logo">
+                <img src="/assets/images/favicon_240.png?v=1784260055" class="nav-icon" width="40" height="40" alt="Swing Replay Logo">
                 <span class="nav-app-name">Swing Replay</span>
             </a>
 
@@ -441,13 +450,13 @@
         <div class="columns is-vcentered">
         <div class="column has-text-centered-mobile">
             <a href="https://reddit.com/user/golfswingreplay/submitted/">
-            <img src="/assets/images/social_reddit.svg?v=1784258126" class="social" width="24" height="24" alt="Reddit" />
+            <img src="/assets/images/social_reddit.svg?v=1784260055" class="social" width="24" height="24" alt="Reddit" />
             </a>
             <a href="https://instagram.com/golfswingreplay">
-            <img src="/assets/images/social_instagram.svg?v=1784258126" class="social" width="24" height="24" alt="Instagram" />
+            <img src="/assets/images/social_instagram.svg?v=1784260055" class="social" width="24" height="24" alt="Instagram" />
             </a>
             <a href="https://youtube.com/@golfswingreplay">
-            <img src="/assets/images/social_youtube.svg?v=1784258126" class="social" width="24" height="24" alt="YouTube" />
+            <img src="/assets/images/social_youtube.svg?v=1784260055" class="social" width="24" height="24" alt="YouTube" />
             </a>
         </div>
 
