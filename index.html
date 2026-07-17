@@ -13,10 +13,211 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <link rel="preload" as="image" type="image/webp" fetchpriority="high" href="/assets/images/iPhone_preview_poster.webp?v=1784261365">
-    <link rel="icon" type="image/png" href="/assets/images/favicon_240.png?v=1784261365" >        
-    <link rel="apple-touch-icon" href="/assets/images/favicon_240.png?v=1784261365" >        
-    <link rel="stylesheet" href="/assets/css/main.css?v=1784261365" >
+    <link rel="preload" as="image" type="image/webp" fetchpriority="high" href="/assets/images/iPhone_preview_poster.webp?v=1784264777">
+    <link rel="preload" as="image" type="image/webp" media="(max-width: 768px)" fetchpriority="high" href="/assets/images/favicon_80.webp?v=1784264777">
+    <link rel="preload" as="image" type="image/png" media="(min-width: 769px)" fetchpriority="high" href="/assets/images/favicon_240.png?v=1784264777">
+    <link rel="icon" type="image/png" href="/assets/images/favicon_240.png?v=1784264777" >        
+    <link rel="apple-touch-icon" href="/assets/images/favicon_240.png?v=1784264777" >        
+    <style>
+  /* Small above-the-fold subset. The full stylesheet is preloaded below. */
+  html { box-sizing: border-box; min-width: 300px; overflow-x: hidden; }
+  *, *::before, *::after { box-sizing: inherit; }
+  body {
+    margin: 0;
+    background: #eaeaea;
+    color: #1c1c1e;
+    font-family: "Hanken Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  img, video { height: auto; max-width: 100%; }
+
+  .glass-navbar-container {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-top: 24px;
+    pointer-events: none;
+  }
+  .glass-navbar-spacer { width: 100%; height: 104px; }
+  .glass-navbar { width: 100%; max-width: 980px; height: 76px; padding: 0 12px; pointer-events: auto; }
+  .glass-navbar-content {
+    display: grid;
+    grid-template-columns: .55fr .9fr .55fr;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 0 18px;
+    background: rgba(255, 255, 255, .7);
+    border: 1px solid rgba(255, 255, 255, .8);
+    border-radius: 999px;
+  }
+  .nav-identity { display: flex; align-items: center; margin-left: 12px; color: #000; text-decoration: none; }
+  .nav-identity .nav-icon { display: block; width: 40px; height: 40px; filter: drop-shadow(0 4px 12px rgba(0, 0, 0, .08)); }
+  .nav-identity .nav-app-name { margin-left: 11px; font-size: 1.05rem; font-weight: 700; }
+  .nav-links { display: flex; justify-self: center; gap: 32px; margin: 0; padding: 0; list-style: none; }
+  .nav-item-link { color: rgba(0, 0, 0, .6); font-size: .95rem; font-weight: 600; text-decoration: none; }
+  .nav-action { justify-self: end; }
+  .nav-action-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: #1c1c1e;
+    border-radius: 99px;
+    color: #fff;
+    font-size: .85rem;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+    transition: all .25s cubic-bezier(.16, 1, .3, 1);
+  }
+  .nav-action-btn .btn-apple-logo { display: flex; align-items: center; }
+
+  .hero-section { position: relative; padding: 60px 0 80px; background: #eaeaea; }
+  .hero-container {
+    display: grid;
+    grid-template-columns: 1fr 310px;
+    align-items: center;
+    gap: 80px;
+    max-width: 940px;
+    margin: 0 auto;
+    padding: 0 60px;
+  }
+  .hero-content { min-width: 0; }
+  .laurels-badge-container {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  .laurels-header { margin-bottom: 4px; }
+  .laurel-star-rating { display: flex; gap: 2px; color: #1c1c1e; font-size: .75rem; }
+  .laurels-wrap { display: flex; align-items: center; gap: 10px; color: #1c1c1e; }
+  .laurel-leading, .laurel-trailing { display: flex; align-items: center; color: #1c1c1e; }
+  .laurel-leading svg, .laurel-trailing svg { fill: currentColor; color: inherit; }
+  .laurel-trailing svg { transform: scaleX(-1); }
+  .laurel-badge-value { color: #000; font-size: 1.6rem; font-weight: 800; letter-spacing: -.02em; }
+  .laurels-caption { margin-top: 4px; color: #4c5950; font-size: .65rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
+  .hero-title {
+    margin: 0 0 20px;
+    color: #000;
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -.04em;
+  }
+  .hero-title-accent { display: inline-block; color: #2f6348; }
+  .hero-subtitle {
+    max-width: 520px;
+    margin: 0 0 40px;
+    color: rgba(0, 0, 0, .55);
+    font-size: 1.35rem;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: -.01em;
+  }
+  .hero-action { display: block; }
+  .hero-download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 36px;
+    background: #000;
+    border-radius: 99px;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .15);
+    transition: all .3s cubic-bezier(.16, 1, .3, 1);
+    animation: none;
+  }
+  .hero-download-btn .btn-apple-logo { display: flex; align-items: center; }
+  .hero-media { display: flex; align-items: center; justify-content: center; }
+  .iphone-bezel-wrapper { position: relative; perspective: 1000px; }
+  .iphone-bezel {
+    position: relative;
+    z-index: 2;
+    width: 290px;
+    height: 602px;
+    overflow: hidden;
+    background: #000;
+    border: 11px solid #1c1d1e;
+    border-radius: 44px;
+  }
+  .iphone-dynamic-island {
+    position: absolute;
+    z-index: 10;
+    top: 14px;
+    left: 50%;
+    width: 82px;
+    height: 25px;
+    transform: translateX(-50%);
+    background: #000;
+    border-radius: 12px;
+  }
+  .iphone-screen {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #0d1a08;
+    border-radius: 34px;
+  }
+  .hero-video-poster {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .iphone-screen video {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    object-fit: cover;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body, .hero-section { background: #0b0d0c; }
+    .glass-navbar-content { background: rgba(20, 22, 21, .7); border-color: rgba(44, 46, 45, .7); }
+    .nav-identity { color: #fff; }
+    .nav-item-link { color: rgba(255, 255, 255, .65); }
+    .nav-action-btn, .hero-download-btn { background: #fff; color: #1c1c1e; }
+    .laurel-star-rating, .laurels-wrap, .laurel-leading, .laurel-trailing { color: #f5f5f7; }
+    .laurel-badge-value { color: #fff; }
+    .laurels-caption { color: #c1ccc4; }
+    .hero-title { color: #fff; }
+    .hero-title-accent { color: #8db69a; }
+    .hero-subtitle { color: rgba(255, 255, 255, .6); }
+  }
+
+  @media (max-width: 768px) {
+    .glass-navbar-container { padding: 12px; }
+    .glass-navbar-spacer { height: 88px; }
+    .glass-navbar-content { display: flex; justify-content: space-between; padding: 0 16px; }
+    .nav-identity { margin-left: 0; }
+    .nav-links { display: none; }
+    .hero-action { display: flex; justify-content: center; }
+    .laurels-badge-container { margin: 0 auto 24px; }
+    .hero-title { font-size: 2.75rem; }
+    .hero-subtitle { margin: 0 auto 30px; font-size: 1.15rem; }
+    .hero-section { padding: 30px 0 45px; }
+    .hero-container { grid-template-columns: 1fr; gap: 40px; padding: 0 30px; text-align: center; }
+  }
+</style>
+
+    <link rel="preload" as="style" href="/assets/css/main.css?v=1784264777" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/assets/css/main.css?v=1784264777"></noscript>
     <link rel="canonical" href="https://golfswingreplay.com">
 
     <meta property="og:url" content="https://golfswingreplay.com">
@@ -24,7 +225,7 @@
     <meta property="og:description" content="Swing Replay - iOS app for recording your golf swing">
     <meta property="og:type" content="website">
 
-    <meta property="og:image" content="/assets/images/og-image.png?v=1784261365">
+    <meta property="og:image" content="/assets/images/og-image.png?v=1784264777">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1280">
     <meta property="og:image:height" content="630">
@@ -230,7 +431,10 @@
         <div class="glass-navbar-content">
             <!-- App Identity -->
             <a class="nav-identity" href="/">
-                <img src="/assets/images/favicon_240.png?v=1784261365" class="nav-icon" width="40" height="40" alt="Swing Replay Logo">
+                <picture>
+                    <source media="(max-width: 768px)" type="image/webp" srcset="/assets/images/favicon_80.webp?v=1784264777">
+                    <img src="/assets/images/favicon_240.png?v=1784264777" class="nav-icon" width="40" height="40" fetchpriority="high" alt="Swing Replay Logo">
+                </picture>
                 <span class="nav-app-name">Swing Replay</span>
             </a>
 
@@ -329,16 +533,16 @@
                 <div class="iphone-screen">
                   <img
                     class="hero-video-poster"
-                    src="/assets/images/iPhone_preview_poster.webp?v=1784261365"
+                    src="/assets/images/iPhone_preview_poster.webp?v=1784264777"
                     width="443"
                     height="960"
                     fetchpriority="high"
-                    decoding="sync"
+                    decoding="async"
                     alt=""
                     aria-hidden="true"
                   />
                   <!-- Video element playing Swing Replay preview video -->
-                  <video id="demo-video" autoplay loop muted playsinline preload="none" data-src="/assets/images/iPhone_preview_v2.mp4?v=1784261365" data-src-mobile="/assets/images/iPhone_preview_mobile.mp4?v=1784261365" poster="/assets/images/iPhone_preview_poster.webp?v=1784261365" onended="this.currentTime = 0; this.play();" aria-label="Swing Replay demo video">
+                  <video id="demo-video" autoplay loop muted playsinline preload="none" data-src="/assets/images/iPhone_preview_v2.mp4?v=1784264777" data-src-mobile="/assets/images/iPhone_preview_mobile.mp4?v=1784264777" poster="/assets/images/iPhone_preview_poster.webp?v=1784264777" onended="this.currentTime = 0; this.play();" aria-label="Swing Replay demo video">
                     <track kind="captions" srclang="en" label="English" src="/assets/video/demo-captions.vtt">
                   </video>
                   
@@ -386,10 +590,10 @@
                 <picture>
                   <source
                     type="image/webp"
-                    srcset="/assets/images/iphone_recording-454.webp?v=1784261365 454w, /assets/images/iphone_recording.webp?v=1784261365 1142w"
+                    srcset="/assets/images/iphone_recording-454.webp?v=1784264777 454w, /assets/images/iphone_recording.webp?v=1784264777 1142w"
                     sizes="227px"
                   />
-                  <img id="iphone_recording" src="/assets/images/iphone_recording.png?v=1784261365" width="1142" height="2266" loading="lazy" decoding="async" alt="iPhone recording golf swing" />
+                  <img id="iphone_recording" src="/assets/images/iphone_recording.png?v=1784264777" width="1142" height="2266" loading="lazy" decoding="async" alt="iPhone recording golf swing" />
                 </picture>
               </div>
             </figure>
@@ -404,10 +608,10 @@
                 <picture>
                   <source
                     type="image/webp"
-                    srcset="/assets/images/iphone_positions-454.webp?v=1784261365 454w, /assets/images/iphone_positions.webp?v=1784261365 1142w"
+                    srcset="/assets/images/iphone_positions-454.webp?v=1784264777 454w, /assets/images/iphone_positions.webp?v=1784264777 1142w"
                     sizes="227px"
                   />
-                  <img id="iphone_playback" src="/assets/images/iphone_positions.png?v=1784261365" width="1142" height="2266" loading="lazy" decoding="async" alt="iPhone instant replay of golf swing" />
+                  <img id="iphone_playback" src="/assets/images/iphone_positions.png?v=1784264777" width="1142" height="2266" loading="lazy" decoding="async" alt="iPhone instant replay of golf swing" />
                 </picture>
               </div>
             </figure>
@@ -422,10 +626,10 @@
                 <picture>
                   <source
                     type="image/webp"
-                    srcset="/assets/images/iphone_playback-454.webp?v=1784261365 454w, /assets/images/iphone_playback.webp?v=1784261365 1142w"
+                    srcset="/assets/images/iphone_playback-454.webp?v=1784264777 454w, /assets/images/iphone_playback.webp?v=1784264777 1142w"
                     sizes="227px"
                   />
-                  <img id="iphone_playback_trace" src="/assets/images/iphone_playback.png?v=1784261365" width="1142" height="2266" loading="lazy" decoding="async" alt="iPhone showing swing trace visualization" />
+                  <img id="iphone_playback_trace" src="/assets/images/iphone_playback.png?v=1784264777" width="1142" height="2266" loading="lazy" decoding="async" alt="iPhone showing swing trace visualization" />
                 </picture>
               </div>
             </figure>
@@ -436,10 +640,10 @@
                 <picture>
                   <source
                     type="image/webp"
-                    srcset="/assets/images/iphone_drawing-454.webp?v=1784261365 454w, /assets/images/iphone_drawing.webp?v=1784261365 1142w"
+                    srcset="/assets/images/iphone_drawing-454.webp?v=1784264777 454w, /assets/images/iphone_drawing.webp?v=1784264777 1142w"
                     sizes="227px"
                   />
-                  <img id="iphone_drawing" src="/assets/images/iphone_drawing.png?v=1784261365" width="1142" height="2266" loading="lazy" decoding="async" alt="Analyze your swing with easy to use drawing tools." />
+                  <img id="iphone_drawing" src="/assets/images/iphone_drawing.png?v=1784264777" width="1142" height="2266" loading="lazy" decoding="async" alt="Analyze your swing with easy to use drawing tools." />
                 </picture>
               </div>
               <div class="bento-card-text">
@@ -454,10 +658,10 @@
                 <picture>
                   <source
                     type="image/webp"
-                    srcset="/assets/images/iphone_compare-640.webp?v=1784261365 640w, /assets/images/iphone_compare.webp?v=1784261365 2266w"
+                    srcset="/assets/images/iphone_compare-640.webp?v=1784264777 640w, /assets/images/iphone_compare.webp?v=1784264777 2266w"
                     sizes="(max-width: 768px) 310px, 410px"
                   />
-                  <img id="iphone_compare" src="/assets/images/iphone_compare.png?v=1784261365" width="1133" height="571" loading="lazy" decoding="async" alt="Compare swings side-by-side. Track your progress over time or match your mechanics with a professional." />
+                  <img id="iphone_compare" src="/assets/images/iphone_compare.png?v=1784264777" width="1133" height="571" loading="lazy" decoding="async" alt="Compare swings side-by-side. Track your progress over time or match your mechanics with a professional." />
                 </picture>
               </div>
               <div class="bento-card-text">
@@ -477,10 +681,10 @@
                 <picture>
                   <source
                     type="image/webp"
-                    srcset="/assets/images/ipad_playback_real-600.webp?v=1784261365 600w, /assets/images/ipad_playback_real-900.webp?v=1784261365 900w, /assets/images/ipad_playback_real.webp?v=1784261365 1024w"
+                    srcset="/assets/images/ipad_playback_real-600.webp?v=1784264777 600w, /assets/images/ipad_playback_real-900.webp?v=1784264777 900w, /assets/images/ipad_playback_real.webp?v=1784264777 1024w"
                     sizes="(max-width: 768px) 100vw, 940px"
                   />
-                  <img id="ipad_playback" src="/assets/images/ipad_playback_real.jpg?v=1784261365" width="1024" height="703" loading="lazy" decoding="async" alt="Pair with an iPad to watch the instant replay on a larger screen, right in front of you." />
+                  <img id="ipad_playback" src="/assets/images/ipad_playback_real.jpg?v=1784264777" width="1024" height="703" loading="lazy" decoding="async" alt="Pair with an iPad to watch the instant replay on a larger screen, right in front of you." />
                 </picture>
               </div>
             </figure>
@@ -660,7 +864,7 @@
               <div class="column">
                 <img
                   id="ipad_replay"
-                  src="/assets/images/android-head_flat.png?v=1784261365"
+                  src="/assets/images/android-head_flat.png?v=1784264777"
                   width="303"
                   height="177"
                   loading="lazy"
@@ -715,13 +919,13 @@
         <div class="columns is-vcentered">
         <div class="column has-text-centered-mobile">
             <a href="https://reddit.com/user/golfswingreplay/submitted/">
-            <img src="/assets/images/social_reddit.svg?v=1784261365" class="social" width="24" height="24" alt="Reddit" />
+            <img src="/assets/images/social_reddit.svg?v=1784264777" class="social" width="24" height="24" alt="Reddit" />
             </a>
             <a href="https://instagram.com/golfswingreplay">
-            <img src="/assets/images/social_instagram.svg?v=1784261365" class="social" width="24" height="24" alt="Instagram" />
+            <img src="/assets/images/social_instagram.svg?v=1784264777" class="social" width="24" height="24" alt="Instagram" />
             </a>
             <a href="https://youtube.com/@golfswingreplay">
-            <img src="/assets/images/social_youtube.svg?v=1784261365" class="social" width="24" height="24" alt="YouTube" />
+            <img src="/assets/images/social_youtube.svg?v=1784264777" class="social" width="24" height="24" alt="YouTube" />
             </a>
         </div>
 
