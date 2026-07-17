@@ -9,9 +9,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <link rel="icon" type="image/png" href="/assets/images/favicon_240.png?v=1784252663" >        
-    <link rel="apple-touch-icon" href="/assets/images/favicon_240.png?v=1784252663" >        
-    <link rel="stylesheet" href="/assets/css/main.css?v=1784252663" >
+    <link rel="icon" type="image/png" href="/assets/images/favicon_240.png?v=1784258126" >        
+    <link rel="apple-touch-icon" href="/assets/images/favicon_240.png?v=1784258126" >        
+    <link rel="stylesheet" href="/assets/css/main.css?v=1784258126" >
     
     <link rel="canonical" href="https://golfswingreplay.com/ja/privacy/">
     
@@ -20,7 +20,7 @@
     <meta property="og:description" content="Swing Replay - iOS app for recording your golf swing">
     <meta property="og:type" content="website">
 
-    <meta property="og:image" content="/assets/images/og-image.png?v=1784252663">
+    <meta property="og:image" content="/assets/images/og-image.png?v=1784258126">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1280">
     <meta property="og:image:height" content="630">
@@ -139,6 +139,9 @@
         let playWaitingForVideo = false;
         const playThreshold = 0.75;
         demoVideo.muted = true;
+        demoVideo.addEventListener('loadeddata', () => {
+          demoVideo.classList.add('is-ready');
+        }, { once: true });
 
         const loadDemoVideo = () => {
           if (demoVideo.dataset.loaded) return;
@@ -213,7 +216,7 @@
         <div class="glass-navbar-content">
             <!-- App Identity -->
             <a class="nav-identity" href="/ja/">
-                <img src="/assets/images/favicon_240.png?v=1784252663" class="nav-icon" width="40" height="40" alt="Swing Replay Logo">
+                <img src="/assets/images/favicon_240.png?v=1784258126" class="nav-icon" width="40" height="40" alt="Swing Replay Logo">
                 <span class="nav-app-name">Swing Replay</span>
             </a>
 
@@ -960,13 +963,13 @@ To request to review, update, or delete your personal information, please fill o
         <div class="columns is-vcentered">
         <div class="column has-text-centered-mobile">
             <a href="https://reddit.com/user/golfswingreplay/submitted/">
-            <img src="/assets/images/social_reddit.svg?v=1784252663" class="social" width="24" height="24" alt="Reddit" />
+            <img src="/assets/images/social_reddit.svg?v=1784258126" class="social" width="24" height="24" alt="Reddit" />
             </a>
             <a href="https://instagram.com/golfswingreplay">
-            <img src="/assets/images/social_instagram.svg?v=1784252663" class="social" width="24" height="24" alt="Instagram" />
+            <img src="/assets/images/social_instagram.svg?v=1784258126" class="social" width="24" height="24" alt="Instagram" />
             </a>
             <a href="https://youtube.com/@golfswingreplay">
-            <img src="/assets/images/social_youtube.svg?v=1784252663" class="social" width="24" height="24" alt="YouTube" />
+            <img src="/assets/images/social_youtube.svg?v=1784258126" class="social" width="24" height="24" alt="YouTube" />
             </a>
         </div>
 
