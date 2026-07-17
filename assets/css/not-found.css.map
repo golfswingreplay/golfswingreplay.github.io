@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "not-found.css",
+	"sources": [
+		"not-found.scss"
+	],
+	"sourcesContent": [
+		"/* Styles used only by the 404 page. */\n.notfound {\n    background: url(\"/assets/images/golf_hole.jpg\") no-repeat center top;\n    background-size: cover;\n    background-position-y: 25%;\n}\n\n.notfound .container {\n    min-height: 85vh;\n}\n"
+	],
+	"names": [],
+	"mappings": "AACA,AAAA,SAAS,AAAC,CACN,UAAU,CAAE,mCAAmC,CAAC,SAAS,CAAC,MAAM,CAAC,GAAG,CACpE,eAAe,CAAE,KAAK,CACtB,qBAAqB,CAAE,GAAG,CAC7B,AAED,AAAA,SAAS,CAAC,UAAU,AAAC,CACjB,UAAU,CAAE,IAAI,CACnB"
+}

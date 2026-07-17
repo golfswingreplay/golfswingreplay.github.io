@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "contact.css",
+	"sources": [
+		"contact.scss"
+	],
+	"sourcesContent": [
+		"/* Layout used only by the contact page. */\nsection.contact {\n    min-height: calc(100vh - 200px);\n}\n"
+	],
+	"names": [],
+	"mappings": "AACA,AAAA,OAAO,AAAA,QAAQ,AAAC,CACZ,UAAU,CAAE,mBAAmB,CAClC"
+}
