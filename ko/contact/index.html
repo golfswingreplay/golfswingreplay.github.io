@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">  
+<html lang="ko">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,9 +9,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <link rel="icon" type="image/png" href="/assets/images/favicon_240.png?v=1784002746" >        
-    <link rel="apple-touch-icon" href="/assets/images/favicon_240.png?v=1784002746" >        
-    <link rel="stylesheet" href="/assets/css/main.css?v=1784002746" >
+    <link rel="icon" type="image/png" href="/assets/images/favicon_240.png?v=1784246728" >        
+    <link rel="apple-touch-icon" href="/assets/images/favicon_240.png?v=1784246728" >        
+    <link rel="stylesheet" href="/assets/css/main.css?v=1784246728" >
     <link rel="canonical" href="https://golfswingreplay.com/ko/contact/">
     
     <meta property="og:url" content="https://golfswingreplay.com/contact/">
@@ -19,10 +19,15 @@
     <meta property="og:description" content="Swing Replay - iOS app for recording your golf swing">
     <meta property="og:type" content="website">
 
-    <meta property="og:image" content="/assets/images/og-image.png?v=1784002746">
+    <meta property="og:image" content="/assets/images/og-image.png?v=1784246728">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1280">
     <meta property="og:image:height" content="630">
+
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100;200;300;400;500;600;700;900&display=swap" as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100;200;300;400;500;600;700;900&display=swap" media="print" onload="this.onload=null;this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100;200;300;400;500;600;700;900&display=swap"></noscript>
+
 
   
     <!-- Meta Pixel Code -->
@@ -148,6 +153,81 @@
         });
     </script>
 
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const demoVideo = document.getElementById('demo-video');
+        if (!demoVideo) return;
+
+        let videoIsVisible = false;
+        let playWaitingForVideo = false;
+        const playThreshold = 0.75;
+        demoVideo.muted = true;
+
+        const loadDemoVideo = () => {
+          if (demoVideo.dataset.loaded) return;
+          // Keep autoplay disabled if the video is still below the visibility
+          // threshold, even though the element carries the muted autoplay hint.
+          demoVideo.autoplay = videoIsVisible;
+          const source = document.createElement('source');
+          source.src = demoVideo.dataset.src;
+          source.type = 'video/mp4';
+          demoVideo.appendChild(source);
+          // Start buffering after the initial page render, independently of
+          // the scroll-based playback trigger.
+          demoVideo.preload = 'auto';
+          demoVideo.dataset.loaded = 'true';
+          demoVideo.load();
+          if (videoIsVisible) playDemoVideo();
+        };
+
+        const playDemoVideo = () => {
+          if (!videoIsVisible) return;
+          if (!demoVideo.paused) return;
+          if (demoVideo.readyState < 3) {
+            if (!playWaitingForVideo) {
+              playWaitingForVideo = true;
+              demoVideo.addEventListener('canplay', () => {
+                playWaitingForVideo = false;
+                playDemoVideo();
+              }, { once: true });
+            }
+            return;
+          }
+          // Enable autoplay only after the visibility threshold has been met.
+          demoVideo.autoplay = true;
+          demoVideo.play().catch(() => {});
+        };
+
+        const scheduleVideoLoad = () => {
+          if ('requestIdleCallback' in window) {
+            window.requestIdleCallback(loadDemoVideo, { timeout: 2500 });
+          } else {
+            window.setTimeout(loadDemoVideo, 1000);
+          }
+        };
+
+        if (document.readyState === 'complete') {
+          scheduleVideoLoad();
+        } else {
+          window.addEventListener('load', scheduleVideoLoad, { once: true });
+        }
+
+        if ('IntersectionObserver' in window) {
+          const observer = new IntersectionObserver((entries) => {
+            // Wait until most of the video is visible; showing only its top edge
+            // should not start playback.
+            videoIsVisible = entries[0].intersectionRatio >= playThreshold;
+            if (!videoIsVisible) return;
+            playDemoVideo();
+          }, { threshold: playThreshold });
+          observer.observe(demoVideo);
+        } else {
+          videoIsVisible = true;
+          playDemoVideo();
+        }
+      });
+    </script>
+
   </head>
 
   <body class="layout-default">    
@@ -156,7 +236,7 @@
         <div class="glass-navbar-content">
             <!-- App Identity -->
             <a class="nav-identity" href="/ko/">
-                <img src="/assets/images/favicon_240.png?v=1784002746" class="nav-icon" alt="Swing Replay Logo">
+                <img src="/assets/images/favicon_240.png?v=1784246728" class="nav-icon" width="40" height="40" alt="Swing Replay Logo">
                 <span class="nav-app-name">Swing Replay</span>
             </a>
 
@@ -185,7 +265,9 @@
 </div>
 <div class="glass-navbar-spacer"></div>
 
-    <script>
+
+    <main id="main-content">
+      <script>
   document.addEventListener('DOMContentLoaded', function () {
       const form = document.getElementById('contactForm');
       var submitBtn = document.getElementById('send-button');
@@ -288,7 +370,8 @@
       </div>
     </div>
   </div>
-</section>    
+</section>
+    </main>
   </body>
 
   <footer class="footer">
@@ -296,13 +379,13 @@
         <div class="columns is-vcentered">
         <div class="column has-text-centered-mobile">
             <a href="https://reddit.com/user/golfswingreplay/submitted/">
-            <img src="/assets/images/social_reddit.svg?v=1784002746" class="social" />
+            <img src="/assets/images/social_reddit.svg?v=1784246728" class="social" width="24" height="24" alt="Reddit" />
             </a>
             <a href="https://instagram.com/golfswingreplay">
-            <img src="/assets/images/social_instagram.svg?v=1784002746" class="social" />
+            <img src="/assets/images/social_instagram.svg?v=1784246728" class="social" width="24" height="24" alt="Instagram" />
             </a>
             <a href="https://youtube.com/@golfswingreplay">
-            <img src="/assets/images/social_youtube.svg?v=1784002746" class="social" />
+            <img src="/assets/images/social_youtube.svg?v=1784246728" class="social" width="24" height="24" alt="YouTube" />
             </a>
         </div>
 
@@ -380,4 +463,5 @@
         </div>
     </div>
 </footer>
+
 </html>

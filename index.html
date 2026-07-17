@@ -1,5 +1,5 @@
-<!DOCTYPE html lang=en>
-<html lang=en>  
+<!doctype html>
+<html lang="en">
   <head>
     <link rel="canonical" href="https://golfswingreplay.com/"/>
 <link rel="alternate" hreflang="en" href="https://golfswingreplay.com/"/>
@@ -13,9 +13,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <link rel="icon" type="image/png" href="/assets/images/favicon_240.png?v=1784002746" >        
-    <link rel="apple-touch-icon" href="/assets/images/favicon_240.png?v=1784002746" >        
-    <link rel="stylesheet" href="/assets/css/main.css?v=1784002746" >
+    <link rel="preload" as="image" type="image/webp" fetchpriority="high" href="/assets/images/iPhone_preview_poster.webp?v=1784246728">
+    <link rel="icon" type="image/png" href="/assets/images/favicon_240.png?v=1784246728" >        
+    <link rel="apple-touch-icon" href="/assets/images/favicon_240.png?v=1784246728" >        
+    <link rel="stylesheet" href="/assets/css/main.css?v=1784246728" >
     <link rel="canonical" href="https://golfswingreplay.com">
 
     <meta property="og:url" content="https://golfswingreplay.com">
@@ -23,10 +24,15 @@
     <meta property="og:description" content="Swing Replay - iOS app for recording your golf swing">
     <meta property="og:type" content="website">
 
-    <meta property="og:image" content="/assets/images/og-image.png?v=1784002746">
+    <meta property="og:image" content="/assets/images/og-image.png?v=1784246728">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1280">
     <meta property="og:image:height" content="630">
+
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100;200;300;400;500;600;700;900&display=swap" as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100;200;300;400;500;600;700;900&display=swap" media="print" onload="this.onload=null;this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100;200;300;400;500;600;700;900&display=swap"></noscript>
+
 
   
     <!-- Meta Pixel Code -->
@@ -152,6 +158,81 @@
         });
     </script>
 
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const demoVideo = document.getElementById('demo-video');
+        if (!demoVideo) return;
+
+        let videoIsVisible = false;
+        let playWaitingForVideo = false;
+        const playThreshold = 0.75;
+        demoVideo.muted = true;
+
+        const loadDemoVideo = () => {
+          if (demoVideo.dataset.loaded) return;
+          // Keep autoplay disabled if the video is still below the visibility
+          // threshold, even though the element carries the muted autoplay hint.
+          demoVideo.autoplay = videoIsVisible;
+          const source = document.createElement('source');
+          source.src = demoVideo.dataset.src;
+          source.type = 'video/mp4';
+          demoVideo.appendChild(source);
+          // Start buffering after the initial page render, independently of
+          // the scroll-based playback trigger.
+          demoVideo.preload = 'auto';
+          demoVideo.dataset.loaded = 'true';
+          demoVideo.load();
+          if (videoIsVisible) playDemoVideo();
+        };
+
+        const playDemoVideo = () => {
+          if (!videoIsVisible) return;
+          if (!demoVideo.paused) return;
+          if (demoVideo.readyState < 3) {
+            if (!playWaitingForVideo) {
+              playWaitingForVideo = true;
+              demoVideo.addEventListener('canplay', () => {
+                playWaitingForVideo = false;
+                playDemoVideo();
+              }, { once: true });
+            }
+            return;
+          }
+          // Enable autoplay only after the visibility threshold has been met.
+          demoVideo.autoplay = true;
+          demoVideo.play().catch(() => {});
+        };
+
+        const scheduleVideoLoad = () => {
+          if ('requestIdleCallback' in window) {
+            window.requestIdleCallback(loadDemoVideo, { timeout: 2500 });
+          } else {
+            window.setTimeout(loadDemoVideo, 1000);
+          }
+        };
+
+        if (document.readyState === 'complete') {
+          scheduleVideoLoad();
+        } else {
+          window.addEventListener('load', scheduleVideoLoad, { once: true });
+        }
+
+        if ('IntersectionObserver' in window) {
+          const observer = new IntersectionObserver((entries) => {
+            // Wait until most of the video is visible; showing only its top edge
+            // should not start playback.
+            videoIsVisible = entries[0].intersectionRatio >= playThreshold;
+            if (!videoIsVisible) return;
+            playDemoVideo();
+          }, { threshold: playThreshold });
+          observer.observe(demoVideo);
+        } else {
+          videoIsVisible = true;
+          playDemoVideo();
+        }
+      });
+    </script>
+
   </head>
 
   <body class="layout-home">
@@ -161,7 +242,7 @@
         <div class="glass-navbar-content">
             <!-- App Identity -->
             <a class="nav-identity" href="/">
-                <img src="/assets/images/favicon_240.png?v=1784002746" class="nav-icon" alt="Swing Replay Logo">
+                <img src="/assets/images/favicon_240.png?v=1784246728" class="nav-icon" width="40" height="40" alt="Swing Replay Logo">
                 <span class="nav-app-name">Swing Replay</span>
             </a>
 
@@ -189,8 +270,9 @@
     </nav>
 </div>
 <div class="glass-navbar-spacer"></div>
+
       
-    <div class="home-main">
+    <main id="main-content" class="home-main">
       <div class="hero-section">
         <div class="hero-container">
           <!-- Column 1: Text Content -->
@@ -258,8 +340,8 @@
                 <div class="iphone-dynamic-island"></div>
                 <div class="iphone-screen">
                   <!-- Video element playing Swing Replay preview video -->
-                  <video id="demo-video" autoplay loop muted playsinline onended="this.currentTime = 0; this.play();" aria-label="Swing Replay demo video">
-                    <source src="/assets/images/iPhone_preview_v2.mp4?v=1784002746" type="video/mp4">
+                  <video id="demo-video" autoplay loop muted playsinline preload="none" data-src="/assets/images/iPhone_preview_v2.mp4?v=1784246728" poster="/assets/images/iPhone_preview_poster.webp?v=1784246728" onended="this.currentTime = 0; this.play();" aria-label="Swing Replay demo video">
+                    <track kind="captions" srclang="en" label="English" src="/assets/video/demo-captions.vtt">
                   </video>
                   
                   <!-- Custom Video Glass Controls -->
@@ -299,13 +381,13 @@
             <!-- Card 1: Automatic Recording (1/3 Width, Stacked Card) -->
             <figure class="bento-card card-third stacked-card card-automatic">
               <div class="bento-card-text">
-                <h3 class="bento-card-title">Auto Recording</h3>
+                <h2 class="bento-card-title">Auto Recording</h2>
                 <p class="bento-card-description">Zero taps, pure focus. Every swing is automatically detected and recorded.</p>
               </div>
               <div class="bento-card-media media-at-bottom">
                 <picture>
-                  <source type="image/webp" srcset="/assets/images/iphone_recording.webp?v=1784002746" />
-                  <img id="iphone_recording" src="/assets/images/iphone_recording.png?v=1784002746" alt="iPhone recording golf swing" />
+                  <source type="image/webp" srcset="/assets/images/iphone_recording.webp?v=1784246728" />
+                  <img id="iphone_recording" src="/assets/images/iphone_recording.png?v=1784246728" width="1142" height="2266" loading="lazy" decoding="async" alt="iPhone recording golf swing" />
                 </picture>
               </div>
             </figure>
@@ -313,13 +395,13 @@
             <!-- Card 2: Instant Replay (1/3 Width, Stacked Card) -->
             <figure class="bento-card card-third stacked-card card-instant">
               <div class="bento-card-text">
-                <h3 class="bento-card-title">Instant Replay</h3>
+                <h2 class="bento-card-title">Instant Replay</h2>
                 <p class="bento-card-description">Replay at full speed or in slow motion, followed by a targeted replay that freezes on your selected positions.</p>
               </div>
               <div class="bento-card-media media-at-bottom">
                 <picture>
-                  <source type="image/webp" srcset="/assets/images/iphone_positions.webp?v=1784002746" />
-                  <img id="iphone_playback" src="/assets/images/iphone_positions.png?v=1784002746" alt="iPhone instant replay of golf swing" />
+                  <source type="image/webp" srcset="/assets/images/iphone_positions.webp?v=1784246728" />
+                  <img id="iphone_playback" src="/assets/images/iphone_positions.png?v=1784246728" width="1142" height="2266" loading="lazy" decoding="async" alt="iPhone instant replay of golf swing" />
                 </picture>
               </div>
             </figure>
@@ -327,13 +409,13 @@
             <!-- Card 2.5: Swing Trace (1/3 Width, Stacked Card) -->
             <figure class="bento-card card-third stacked-card card-swing-trace">
               <div class="bento-card-text">
-                <h3 class="bento-card-title">Swing Trace</h3>
+                <h2 class="bento-card-title">Swing Trace</h2>
                 <p class="bento-card-description">Visualize your swing plane to better understand your swing.</p>
               </div>
               <div class="bento-card-media media-at-bottom">
                 <picture>
-                  <source type="image/webp" srcset="/assets/images/iphone_playback.webp?v=1784002746" />
-                  <img id="iphone_playback_trace" src="/assets/images/iphone_playback.png?v=1784002746" alt="iPhone showing swing trace visualization" />
+                  <source type="image/webp" srcset="/assets/images/iphone_playback.webp?v=1784246728" />
+                  <img id="iphone_playback_trace" src="/assets/images/iphone_playback.png?v=1784246728" width="1142" height="2266" loading="lazy" decoding="async" alt="iPhone showing swing trace visualization" />
                 </picture>
               </div>
             </figure>
@@ -342,12 +424,12 @@
             <figure class="bento-card card-third stacked-card card-drawing">
               <div class="bento-card-media media-at-top">
                 <picture>
-                  <source type="image/webp" srcset="/assets/images/iphone_drawing.webp?v=1784002746" />
-                  <img id="iphone_drawing" src="/assets/images/iphone_drawing.png?v=1784002746" alt="Analyze your swing with easy to use drawing tools." />
+                  <source type="image/webp" srcset="/assets/images/iphone_drawing.webp?v=1784246728" />
+                  <img id="iphone_drawing" src="/assets/images/iphone_drawing.png?v=1784246728" width="1142" height="2266" loading="lazy" decoding="async" alt="Analyze your swing with easy to use drawing tools." />
                 </picture>
               </div>
               <div class="bento-card-text">
-                <h3 class="bento-card-title">Drawing Tools</h3>
+                <h2 class="bento-card-title">Drawing Tools</h2>
                 <p class="bento-card-description">Analyze your swing with easy to use drawing tools.</p>
               </div>
             </figure>
@@ -356,12 +438,12 @@
             <figure class="bento-card card-two-thirds stacked-card card-compare-swings">
               <div class="bento-card-media media-at-top">
                 <picture>
-                  <source type="image/webp" srcset="/assets/images/iphone_compare.webp?v=1784002746" />
-                  <img id="iphone_compare" src="/assets/images/iphone_compare.png?v=1784002746" alt="Compare swings side-by-side. Track your progress over time or match your mechanics with a professional." />
+                  <source type="image/webp" srcset="/assets/images/iphone_compare.webp?v=1784246728" />
+                  <img id="iphone_compare" src="/assets/images/iphone_compare.png?v=1784246728" width="1133" height="571" loading="lazy" decoding="async" alt="Compare swings side-by-side. Track your progress over time or match your mechanics with a professional." />
                 </picture>
               </div>
               <div class="bento-card-text">
-                <h3 class="bento-card-title">Compare Swings</h3>
+                <h2 class="bento-card-title">Compare Swings</h2>
                 <p class="bento-card-description">Compare swings side-by-side. Track your progress over time or match your mechanics with a professional.</p>
               </div>
             </figure>
@@ -369,14 +451,14 @@
             <!-- Card 5: Paired Devices (Full Width, Stacked Card) -->
             <figure class="bento-card card-full stacked-card card-paired-devices">
               <div class="bento-card-text">
-                <h3 class="bento-card-title">Paired Devices</h3>
+                <h2 class="bento-card-title">Paired Devices</h2>
                 <p class="bento-card-description">Pair with an iPad to watch the instant replay on a larger screen, right in front of you.</p>
                 <p class="bento-card-description">Stay in the zone without having to look back at your iPhone.</p>
               </div>
               <div class="bento-card-media media-paired-stacked">
                 <picture>
-                  <source type="image/webp" srcset="/assets/images/ipad_playback_real.webp?v=1784002746" />
-                  <img id="ipad_playback" src="/assets/images/ipad_playback_real.jpg?v=1784002746" alt="Pair with an iPad to watch the instant replay on a larger screen, right in front of you." />
+                  <source type="image/webp" srcset="/assets/images/ipad_playback_real.webp?v=1784246728" />
+                  <img id="ipad_playback" src="/assets/images/ipad_playback_real.jpg?v=1784246728" width="1024" height="703" loading="lazy" decoding="async" alt="Pair with an iPad to watch the instant replay on a larger screen, right in front of you." />
                 </picture>
               </div>
             </figure>
@@ -556,7 +638,11 @@
               <div class="column">
                 <img
                   id="ipad_replay"
-                  src="/assets/images/android-head_flat.png?v=1784002746"
+                  src="/assets/images/android-head_flat.png?v=1784246728"
+                  width="303"
+                  height="177"
+                  loading="lazy"
+                  decoding="async"
                   alt="Android"
                 />
               </div>
@@ -598,7 +684,7 @@
         </div>
 
       </div>
-    </div>   
+    </main>
   </body>
 
 
@@ -607,13 +693,13 @@
         <div class="columns is-vcentered">
         <div class="column has-text-centered-mobile">
             <a href="https://reddit.com/user/golfswingreplay/submitted/">
-            <img src="/assets/images/social_reddit.svg?v=1784002746" class="social" />
+            <img src="/assets/images/social_reddit.svg?v=1784246728" class="social" width="24" height="24" alt="Reddit" />
             </a>
             <a href="https://instagram.com/golfswingreplay">
-            <img src="/assets/images/social_instagram.svg?v=1784002746" class="social" />
+            <img src="/assets/images/social_instagram.svg?v=1784246728" class="social" width="24" height="24" alt="Instagram" />
             </a>
             <a href="https://youtube.com/@golfswingreplay">
-            <img src="/assets/images/social_youtube.svg?v=1784002746" class="social" />
+            <img src="/assets/images/social_youtube.svg?v=1784246728" class="social" width="24" height="24" alt="YouTube" />
             </a>
         </div>
 
@@ -691,4 +777,5 @@
         </div>
     </div>
 </footer>
+
 </html>
